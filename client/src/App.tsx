@@ -14,6 +14,8 @@ import { BookingTracker } from './components/BookingTracker';
 import { AuthModal } from './components/AuthModal';
 import { EmailNotificationViewerModal } from './components/EmailNotificationViewerModal';
 import { AdminDashboard } from './components/admin/AdminDashboard';
+import { CustomCursor } from './components/CustomCursor';
+import { ScrollProgressBar, BackToTopButton } from './components/ScrollFeatures';
 import { Hall, BuildingSettings } from './types';
 import { api } from './services/api';
 import { useAuth } from './context/AuthContext';
@@ -108,6 +110,11 @@ export function App() {
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col selection:bg-accent/20 selection:text-accent">
+      {/* Luxury Interactive Custom Cursor */}
+      <CustomCursor />
+
+      {/* Top Reading Scroll Progress Bar */}
+      <ScrollProgressBar />
       
       {/* 2. Sticky Navbar */}
       <Navbar
@@ -226,6 +233,9 @@ export function App() {
         isOpen={emailViewerOpen}
         onClose={() => setEmailViewerOpen(false)}
       />
+
+      {/* Floating Animated Back-to-Top Button */}
+      <BackToTopButton />
 
     </div>
   );

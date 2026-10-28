@@ -127,6 +127,34 @@ export const Hero: React.FC<HeroProps> = ({ onBookClick, onExploreClick }) => {
         className="absolute top-1/3 right-1/4 translate-x-1/2 w-[550px] h-[300px] bg-accent/20 blur-[140px] rounded-full pointer-events-none"
       />
 
+      {/* Floating Golden & Warm Cream Ambient Dust Particles */}
+      <div className="absolute inset-0 pointer-events-none z-[1] overflow-hidden">
+        {[...Array(18)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute rounded-full bg-accent/50"
+            style={{
+              width: (i % 3) * 2 + 3,
+              height: (i % 3) * 2 + 3,
+              left: `${(i * 5.5 + 4)}%`,
+              top: `${(i * 13) % 80 + 10}%`,
+              boxShadow: '0 0 10px rgba(220, 165, 69, 0.7)'
+            }}
+            animate={{
+              y: [0, -35, 0],
+              x: [0, (i % 2 === 0 ? 15 : -15), 0],
+              opacity: [0.2, 0.85, 0.2]
+            }}
+            transition={{
+              duration: 5 + (i % 4) * 2,
+              repeat: Infinity,
+              ease: 'easeInOut',
+              delay: (i * 0.35)
+            }}
+          />
+        ))}
+      </div>
+
       {/* Manual Slide Navigation Buttons */}
       <button
         onClick={handlePrev}
